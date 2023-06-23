@@ -1,13 +1,76 @@
 <div class="main-content" >
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-3">
+                <div class="card card-user">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option>ทั้งหมด</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                       </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="ค้นหาจากชื่อ">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="ค้นหาจากแท็ก">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-search"></i>
+                                </div>
+                            </div>
+                       </div>
+                    </div>
+                    <!-- <div class="scrollbar scrollbar-primary"> -->
+                    <div class="row scrollbar scrollbar-primary">
+                    <ng-container *ngFor="let item of responseData; let index = index">
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <ng-container *ngIf="item.PictureUrl">
+                                <img class="avatar-chat" src="{{item.PictureUrl}}" alt="..."/>
+                            </ng-container>
+                            <ng-container *ngIf="!item.PictureUrl">
+                                <img class="avatar-chat" src="assets/img/default-avatar.png" alt="..."/>
+                            </ng-container>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>{{item.DisplayName}}</h5>
+                            <p class="text-muted" id="description">{{item.MessageInfo}}</p>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="text-center">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </div>
+                        </div>
+                    </div>
+                    </ng-container>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-md-7">
                 <div class="card">
-                    <div class="header">
-                        <h4 class="title">Edit Profile</h4>
+                    <div class="header" style="background-color: rgb(188, 211, 255);">
+                        <h4 class="title">Name</h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <div class="row">
+                        </div>
+                        <!-- <form>
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
@@ -84,17 +147,17 @@
                             </div>
                             <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
                             <div class="clearfix"></div>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-2">
                 <div class="card card-user">
-                    <div class="image">
+                    <!-- <div class="image">
                         <img src="https://ununsplash.imgix.net/photo-1431578500526-4d9613015464?fit=crop&fm=jpg&h=300&q=75&w=400" alt="..."/>
-                    </div>
+                    </div> -->
                     <div class="content">
-                        <div class="author">
+                        <div class="text-center">
                             <a href="#">
                                 <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
 
