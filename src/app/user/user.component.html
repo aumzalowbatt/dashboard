@@ -1,86 +1,90 @@
-<div class="main-content" >
+<div class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-                <div class="card card-user">
-                    <div class="col-md-6"></div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>ทั้งหมด</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
-                       </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="ค้นหาจากชื่อ">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-search"></i>
-                                </div>
+                <form>
+                    <div class="card card-user">
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>ทั้งหมด</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                             </div>
-                       </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="ค้นหาจากแท็ก">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-search"></i>
-                                </div>
-                            </div>
-                       </div>
-                    </div>
-                    <!-- <div class="scrollbar scrollbar-primary"> -->
-                    <div class="row scrollbar scrollbar-primary">
-                    <ng-container *ngFor="let item of responseData; let index = index">
-                    <div class="col-md-12">
-                        <div class="col-md-3">
-                            <ng-container *ngIf="item.PictureUrl">
-                                <img class="avatar-chat" src="{{item.PictureUrl}}" alt="..."/>
-                            </ng-container>
-                            <ng-container *ngIf="!item.PictureUrl">
-                                <img class="avatar-chat" src="assets/img/default-avatar.png" alt="..."/>
-                            </ng-container>
                         </div>
                         <div class="col-md-6">
-                            <h5>{{item.DisplayName}}</h5>
-                            <p class="text-muted" id="description">{{item.MessageInfo}}</p>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="text-center">
-                                <i class="fa fa-ellipsis-h"></i>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" [(ngModel)]="formModel.displayName"
+                                        placeholder="ค้นหาจากชื่อ">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-search" (click)="clickSearchName()"></i>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="ค้นหาจากแท็ก">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="scrollbar scrollbar-primary"> -->
+                        <div class="row scrollbar scrollbar-primary">
+                            <ng-container *ngFor="let item of responseData; let index = index">
+                                <div class="col-md-12" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)" >
+                                    <div class="col-md-3">
+                                        <ng-container *ngIf="item.PictureUrl">
+                                            <img class="avatar-chat" src="{{item.PictureUrl}}" alt="..." />
+                                        </ng-container>
+                                        <ng-container *ngIf="!item.PictureUrl">
+                                            <img class="avatar-chat" src="assets/img/default-avatar.png" alt="..." />
+                                        </ng-container>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>{{item.DisplayName}}</h5>
+                                        <p class="text-muted" id="description">{{item.MessageInfo}}</p>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <div class="text-center">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <!-- </div> -->
                     </div>
-                    </ng-container>
-                    </div>
-                    <!-- </div> -->
-                </div>
+                </form>
             </div>
             <div class="col-md-7">
                 <div class="card">
                     <div class="header" style="background-color: rgb(188, 211, 255);">
-                        <h4 class="title">Name</h4><span><i class="fa fa-search"></i></span>
+                        <h4 class="title">{{DisplayName}}</h4><span><i class="fa fa-search"></i></span>
                     </div>
-                    
-                        <div class="chatBox">
-                            <div class="message my-message">
-                                <p>HI<br><span>12.15</span></p>
+                    <div class="scrollbar scrollbar-primary">
+                        <ng-container *ngFor="let item of Messages; let index = index">
+                            <div class="chatBox">
+                                <div class="message fri-message">
+                                    <p>{{item.Text}}<br><span>12.15</span></p>
+                                </div>
+                                <div class="message my-message">
+                                    <p>{{item.ReplyMessage}}<br><span>12.15</span></p>
+                                </div>
                             </div>
-                            <div class="message fri-message">
-                                <p>Hellooooooooooo<br><span>12.15</span></p>
-                            </div>
-                        </div>
 
-                        
-                    
-                    
-                        <!-- <form>
+
+
+
+                            <!-- <form>
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="form-group">
@@ -158,7 +162,8 @@
                             <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
                             <div class="clearfix"></div>
                         </form> -->
-                    
+                        </ng-container>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2">
@@ -169,24 +174,28 @@
                     <div class="content">
                         <div class="text-center">
                             <a href="#">
-                                <img class="avatar border-gray" src="assets/img/faces/face-3.jpg" alt="..."/>
-
-                                <h4 class="title">Mike Andrew<br />
-                                    <small>michael24</small>
+                                <ng-container *ngIf="PictureUrl">
+                                    <img class="avatar border-gray" src="{{PictureUrl}}" alt="..." />
+                                </ng-container>
+                                <ng-container *ngIf="!PictureUrl">
+                                    <img class="avatar border-gray" src="assets/img/default-avatar.png" alt="..." />
+                                </ng-container>
+                                <h4 class="title">{{DisplayName}}<br />
+                                    <!-- <small>michael24</small> -->
                                 </h4>
                             </a>
                         </div>
-                        <p class="description text-center"> "Lamborghini Mercy <br>
+                        <!-- <p class="description text-center"> "Lamborghini Mercy <br>
                             Your chick she so thirsty <br>
                             I'm in that two seat Lambo"
-                        </p>
+                        </p> -->
                     </div>
-                    <hr>
+                    <!-- <hr>
                     <div class="text-center">
                         <button href="#" class="btn btn-simple"><i class="fa fa-facebook-square"></i></button>
                         <button href="#" class="btn btn-simple"><i class="fa fa-twitter"></i></button>
                         <button href="#" class="btn btn-simple"><i class="fa fa-google-plus-square"></i></button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

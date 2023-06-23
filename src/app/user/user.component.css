@@ -123,3 +123,9 @@ h5 {
     height: 20px;
     background: linear-gradient(225deg,rgb(241, 239, 239) 0%,rgb(241, 239, 239) 50%,transparent 50%, transparent);
 }
+
+.active {
+    /* สไตล์สำหรับสถานะ active ที่คุณต้องการ */
+    background-color: rgb(187, 220, 252);
+    color: white;
+}
