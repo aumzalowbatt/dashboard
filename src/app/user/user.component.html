@@ -38,9 +38,9 @@
                             </div>
                         </div>
                         <!-- <div class="scrollbar scrollbar-primary"> -->
-                        <div class="row scrollbar scrollbar-primary">
+                        <div class="row scrollbar scrollbar-primary ">
                             <ng-container *ngFor="let item of responseData; let index = index">
-                                <div class="col-md-12" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)" >
+                                <div class="col-md-12 profile-fri" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)" >
                                     <div class="col-md-3">
                                         <ng-container *ngIf="item.PictureUrl">
                                             <img class="avatar-chat" src="{{item.PictureUrl}}" alt="..." />
@@ -68,7 +68,16 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="header" style="background-color: rgb(188, 211, 255);">
-                        <h4 class="title">{{DisplayName}}</h4><span><i class="fa fa-search"></i></span>
+                        <h4 class="title">{{DisplayName}}</h4>
+                        <div class="box">
+                            <input type="checkbox" id="check">
+                        <div class="search-box">
+                            <input type="text" placeholder="Search here...">
+                                <label for ="check" class="icon">
+                                    <i class="fa fa-search"></i>
+                                </label>
+                        </div>
+                        </div>
                     </div>
                     <div class="scrollbar scrollbar-primary">
                         <ng-container *ngFor="let item of Messages; let index = index">
@@ -80,9 +89,6 @@
                                     <p>{{item.ReplyMessage}}<br><span>12.15</span></p>
                                 </div>
                             </div>
-
-
-
 
                             <!-- <form>
                             <div class="row">

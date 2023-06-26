@@ -124,8 +124,95 @@ h5 {
     background: linear-gradient(225deg,rgb(241, 239, 239) 0%,rgb(241, 239, 239) 50%,transparent 50%, transparent);
 }
 
+.chatbox-input icons{
+    cursor: pointer;
+    color : #51585c;
+}
+/* .chatbox-input {
+    background-color: #abaeb3;
+} */
 .active {
     /* สไตล์สำหรับสถานะ active ที่คุณต้องการ */
     background-color: rgb(187, 220, 252);
     color: white;
+}
+
+.chatbox-input input {
+    position: relative;
+    width: 90%;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background-color: #abaeb3;
+}
+ 
+.profile-fri {
+    cursor: pointer;
+}
+
+/* Search */
+.box {
+    max-width: 360px;
+    width: 100%;
+    z-index: 1;
+  
+    justify-content: space-between; /* Add this line */
+}
+.box .search-box {
+    position: relative;
+    height: 40px;
+    max-width: 40px;
+    margin: auto;
+    box-shadow:0 5px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 25px;
+    transition: all 0.3 ease;
+}
+
+.search-box input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 25px;
+    background: #FFF;
+    outline: none;
+    border: none;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+.search-box .icon {
+    position: absolute;
+    right: -2px;
+    top: 0;
+    width: 40px;
+    background:#fff  ;
+    height: 100%;
+    text-align: center;
+    line-height: 40px;
+    color: rgb(189, 189, 189);
+    font-size: 20px;
+    border-radius: 25px;
+}
+
+#check:checked ~ .search-box  {
+    max-width: 340px;
+}
+
+#check:checked ~ .search-box .icon {
+    background: rgb(188, 211, 255);
+    color: #fff;
+    width: 50px;
+    border-radius: 0 25px 25px 0;
+}
+
+#check {
+    display: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
 }
