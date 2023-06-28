@@ -1,0 +1,147 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="card">
+            <div class="header">
+                <h4>ค้นหาและบริการฐานข้อมูลคำทำนาย</h4>
+            </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                            <label class="">ประเภทคำทำนาย</label>
+                            <select>
+                                <option>AA</option>
+                                <option>BB</option>
+                                <option>CC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Filter</label>
+                                <select>
+                                <option>เลือกคำทำนาย</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                </select>
+                        </div>
+                    </div>
+                
+                
+
+                    <div class="col-md-12">
+                        <label class="ms-5" for="checkboxall">ประเภท</label>
+                        <div class="container row">
+                            <div class="col-md-10 input-date"> 
+                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>ตลอด</label>
+                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายสัปดาห์</label>
+                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายเดือน</label>
+                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายปี</label>
+                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายวัน</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="content">
+                        <div class="col-3 ms-3">
+                            <label class="date-valid">Valid from</label>
+                        </div>
+                        <div class="col-6 ms-3">
+                            <select>
+                                <option>AA</option>
+                                <option>BB</option>
+                                <option>CC</option>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label class="date-valid">to</label>
+                        </div>
+                    
+                        <div class="col-6">
+                            <select>
+                                <option>เลือกคำทำนาย</option>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-12 text-right">
+                            <!-- (click)="openAddItemModal()" -->
+                            <button  class="btn btn-success mx-1">
+                                <i class="fas fa-plus-circle"></i>เพิ่มข้อมูล
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>Search Result</h3>
+                        <table class="table">
+                            <thead class="">
+                                <tr>
+                                    <th class="">ลำดับ</th>
+                                    <th class="text-center">ประเภท</th>
+                                    <th class="text-center">รายละเอียด</th>
+                                    <th class="text-center">ประเภทคำทำนาย</th>
+                                    <th class="text-center">from</th>
+                                    <th class="text-center">to</th>
+                                    <th class="text-center">คำทำนาย</th>
+                                    <th class="text-center">จัดการ</th>
+                                </tr>
+                            </thead>
+                
+                            <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td class="text-center">2</td>
+                                        <td class="text-center">3</td>
+                                        <td class="text-center">4</td>
+                                        <td class="text-center">5</td>
+                                        <td class="text-center">6</td>
+                                        <td class="text-center">7</td>
+                                        <td class="text-center">
+                                            
+                                        <button ngbTooltip="แก้ไข" type="button" class="btn btn-warning btn-sm mx-1">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        </td>
+                                    </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Edit and Add Modal -->
+<!-- <ng-template #Addmodal let-modal>
+    <div class="card text-center">
+        <div class="modal-header alert-modal-dark">
+            <h4 class="modal-title" *ngIf="!editMode">เพิ่มข้อมูลเหลื่อมเวลาทำงาน</h4>
+            <h4 class="modal-title" *ngIf="editMode">แก้ไขข้อมูลเหลื่อมเวลาทำงาน</h4>
+        </div>
+    </div>
+
+    <div class="col-2 text-right">
+        <label class="required begin-time">ประเภทคำทำนาย</label>
+    </div>
+    <div class="col-4">
+        <select class="form-control select-begin-time" [(ngModel)]="formAdd.BeginTime" name="BeginTime">
+            <option selected value="">-เลือกประเภทคำทำนาย-</option>
+            <option *ngFor="let item of times" [ngValue]="item.value">{{ item.text | timeDisplay }} น.</option>
+        </select>
+    </div>
+
+    <div class="col-2 text-right">
+        <label class="required end-time">Filter</label>
+    </div>
+    <div class="col-4">
+        <select class="form-control select-end-time" [(ngModel)]="formAdd.EndTime" name="EndTime">
+            <option selected value="">-เลือกประเภทคำทำนาย-</option>
+            <option *ngFor="let item of times" [ngValue]="item.value">{{ item.text | timeDisplay }} น.</option>
+        </select>
+    </div>
+</ng-template>
+ -->

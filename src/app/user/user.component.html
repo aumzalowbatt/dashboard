@@ -38,9 +38,10 @@
                             </div>
                         </div>
                         <!-- <div class="scrollbar scrollbar-primary"> -->
-                        <div class="row scrollbar scrollbar-primary ">
+                        <div class="row scrollbar scrollbar-primary">
                             <ng-container *ngFor="let item of responseData; let index = index">
-                                <div class="col-md-12 profile-fri" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)" >
+                                <div class="col-md-12 chat-table-fri" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)" >
+                                    
                                     <div class="col-md-3">
                                         <ng-container *ngIf="item.PictureUrl">
                                             <img class="avatar-chat" src="{{item.PictureUrl}}" alt="..." />
@@ -58,6 +59,7 @@
                                             <i class="fa fa-ellipsis-h"></i>
                                         </div>
                                     </div>
+
                                 </div>
                             </ng-container>
                         </div>
@@ -65,20 +67,22 @@
                     </div>
                 </form>
             </div>
+
             <div class="col-md-7">
                 <div class="card">
                     <div class="header" style="background-color: rgb(188, 211, 255);">
                         <h4 class="title">{{DisplayName}}</h4>
                         <div class="box">
-                            <input type="checkbox" id="check">
-                        <div class="search-box">
-                            <input type="text" placeholder="Search here...">
-                                <label for ="check" class="icon">
-                                    <i class="fa fa-search"></i>
-                                </label>
-                        </div>
+                                <input type="checkbox" id="check">
+                            <div class="search-box ">
+                                <input type="text" placeholder="Search here...">
+                                    <label for ="check" class="icon">
+                                        <i class="fa fa-search"></i>
+                                    </label>
+                            </div>
                         </div>
                     </div>
+
                     <div class="scrollbar scrollbar-primary">
                         <ng-container *ngFor="let item of Messages; let index = index">
                             <div class="chatBox">

@@ -148,8 +148,20 @@ h5 {
     background-color: #abaeb3;
 }
  
-.profile-fri {
+.chat-table-fri {
     cursor: pointer;
+}
+
+.chat-table-fri:active {
+    background-color: #ccc;
+}
+
+.chat-table-fri:hover{
+    background-color: #ddd;
+}
+
+.chat-table-fri:visited {
+    color: #888;
 }
 
 /* Search */
@@ -157,8 +169,7 @@ h5 {
     max-width: 360px;
     width: 100%;
     z-index: 1;
-  
-    justify-content: space-between; /* Add this line */
+     /* Add this line */
 }
 .box .search-box {
     position: relative;
@@ -215,4 +226,6 @@ h5 {
     display: flex;
     justify-content: space-between;
     padding-bottom: 15px;
+    padding-left: 0px;
+    
 }
