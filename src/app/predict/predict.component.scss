@@ -1,7 +1,23 @@
+.card {
+  font-size: 14px;
+}
+
+label {
+  font-size: 15px;
+}
+
+.chk-days{
+  width: 15px;
+  height: 15px;
+}
+
+h3{
+  margin-top: 0px;
+}
+
 .table-container {
     width: 100%;
     margin-bottom: 20px;
-    margin-top: 20px;
   }
   
   .table {
@@ -42,10 +58,6 @@
     background-color: #e9ecef;
   }
   
-  .btn i {
-    margin-right: 5px;
-  }
-  
   .btn.btn-warning {
     background-color: #ffc107;
     color: #fff;
@@ -54,7 +66,18 @@
   .btn.btn-warning:hover {
     background-color: #ffca2c;
   }
+
+  .btn-add-predict {
+    background-color: #007bff;
+    color: #fff;
+   
+  }
+
+  .btn-add-predict:hover{
+    background-color:#007bff;
+  }
   
+
 
   .content {
     display: flex;
@@ -67,19 +90,7 @@
     margin-bottom: 10px;
   }
   
-//   .col-2 {
-//     flex-basis: 16.6667%;
-//     max-width: 16.6667%;
-//     padding-right: 10px;
-//     padding-left: 10px;
-//   }
-  
-//   .col-4 {
-//     flex-basis: 33.3333%;
-//     max-width: 33.3333%;
-//     padding-right: 10px;
-//     padding-left: 10px;
-//   }
+
   
   label {
     font-weight: bold;
@@ -101,3 +112,31 @@
       margin-right: 15px;
       margin-left: 15px;
   }
+
+  .add-btn{
+    justify-content: flex-end;
+    margin-right: 45px;
+    margin-bottom: 0px;
+  }
+
+  .result-predict{
+    margin-left: 15px;
+  }
+
+  .max-height-modal {
+    max-height: 90vh; /* Adjust the value as needed */
+    overflow-y: scroll;
+  }
+  .modal-content {
+    height: auto;
+    
+  }
+  .modal-dialog {
+    max-width: 900px;
+    width: auto;
+  }
+  
+  
+  
+  
+  

@@ -1,0 +1,133 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="card">
+        <div class="header">
+          <h4>สินค้า</h4>
+        </div>
+        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="">หมวดหมู่ Level 1</label>
+              <select>
+                <option>AA</option>
+                <option>BB</option>
+                <option>CC</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>หมวดหมู่ Level 2</label>
+              <select>
+                <option>เลือกคำทำนาย</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>หมวดหมู่ Level 3</label>
+              <select>
+                <option>เลือกคำทำนาย</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>หมวดหมู่ Level 4</label>
+              <select>
+                <option>เลือกคำทำนาย</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+              </select>
+            </div>
+          </div>
+  
+          <div class="col-md-6">
+            <div class="form-group">
+                <label>ชื่อผลิตภัณฑ์</label>
+              <div class="input-group">
+                
+                <input type="text" class="form-control" placeholder="กรอกชื่อผลิตภัณฑ์">
+                <div class="input-group-addon">
+                  <i class="fa fa-search icon-product"></i>
+                  <!--  (click)="clickSearchName()" -->
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        
+  
+        <div class="row">
+          <div class="col-md-6">
+            <div class="d-flex">
+              <button (click)="openModel()" type="button" class="btn btn-add-predict">
+                <i id="myicon" class="fa fa-user"></i>
+                เพิ่มคำทำนาย
+              </button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex">
+              <button (click)="openModel()" type="button" class="btn btn-add-predict">
+                <i id="myicon" class="fa fa-google-plus-square"></i>
+                Import From Excel
+              </button>
+            </div>
+          </div>
+        </div>
+  
+        <div class="table-container">
+          <table class="table">
+            <thead class="">
+                <h3 class="result">Search Result</h3>
+              <tr class="alert alert-primary">
+                <th class="">ลำดับ</th>
+                <th class="text-center">ประเภท</th>
+                <th class="text-center">ชื่อผลิตภัณฑ์</th>
+                <th class="text-center">รหัสบาร์โค้ด</th>
+                <th class="text-center">ราคา</th>
+                <th class="text-center">ภาพสินค้า</th>
+                <th class="text-center">สี</th>
+                <th class="text-center">ขนาด</th>
+                <th class="text-center">อื่นๆ</th>
+                <th class="text-center">จัดการ</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+                <td class="text-center">1</td>
+                <td class="text-center">2</td>
+                <td class="text-center">3</td>
+                <td class="text-center">4</td>
+                <td class="text-center">5</td>
+                <td class="text-center">6</td>
+                <td class="text-center">7</td>
+                <td class="text-center">8</td>
+                <td class="text-center">9</td>
+                <td class="text-center">
+                  <button (click)="openModel()" ngbTooltip="แก้ไข" type="button" class="btn btn-warning">
+                    <i id="myicon1" class="fa fa-edit"></i>Edit
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+  
+          <!-- Open Modal -->
+          <div class="modal" tabindex="-1" id="myModal" role="dialog">
+            <!-- Modal content -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

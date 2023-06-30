@@ -14,6 +14,10 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { PredictComponent } from './predict/predict.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductComponent } from './product/product.component';
+
+
 
 @NgModule({
   imports: [
@@ -25,12 +29,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterModule,
     SidebarModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    PredictComponent
+    PredictComponent,
+    ProductComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
