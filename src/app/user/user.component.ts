@@ -11,9 +11,12 @@ export class UserComponent implements OnInit {
   Messages: any = [];
   DisplayName: any;
   PictureUrl: any;
+  UserId: any;
   formModel = {
     displayName: "",
     tag: "",
+    searchText: "",
+    messages: "",
   };
   isActive: boolean = false;
   Edate: any;
@@ -28,6 +31,22 @@ export class UserComponent implements OnInit {
   getUser() {
     this.apiService.getData().subscribe((res: any) => {
       this.responseData = res.data;
+      console.log("this.responseData", this.responseData, res.data);
+    });
+  }
+
+  clickMessageByText() {
+    const param = { user: this.UserId, text: this.formModel.messages };
+    // this.apiService.getSearchByText(param).subscribe((res: any) => {
+    //   this.responseData = res.data;
+    //   console.log("this.responseData", this.responseData, res.data);
+    // });
+  }
+
+  clickSearchMessageByText() {
+    const param = { user: this.UserId, text: this.formModel.searchText };
+    this.apiService.getSearchByText(param).subscribe((res: any) => {
+      // this.responseData = res.data;
       console.log("this.responseData", this.responseData, res.data);
     });
   }
@@ -47,14 +66,14 @@ export class UserComponent implements OnInit {
   clickMessageByUser(item) {
     this.DisplayName = item.DisplayName;
     this.PictureUrl = item.PictureUrl;
+    this.UserId = item.UserId;
     this.apiService.getMessageByUser(item.UserId).subscribe((res: any) => {
       if (res.successful) {
-        this.Messages = res.data.map((m) => {   
+        this.Messages = res.data.map((m) => {
           return { ...m };
         });
         console.log("res", this.Messages, this.isActive);
       }
     });
   }
-  
 }

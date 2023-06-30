@@ -27,6 +27,11 @@ export class ApiService {
   postData(data: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/data`, data);
   }
-
+  getSearchByText(data: any): Observable<any> {
+    console.log("data", data);
+    return this.http.get<any>(
+      `${this.apiUrl}/ChatGPT_Test/GetSearchByText?UserId=` + data.user + `&Text=` + data.text
+    );
+  }
   // เพิ่มเมธอดเรียกใช้ API อื่นๆ ตามต้องการ
 }

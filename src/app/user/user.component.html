@@ -75,9 +75,9 @@
                         <div class="box">
                                 <input type="checkbox" id="check">
                             <div class="search-box ">
-                                <input type="text" placeholder="Search here...">
+                                <input type="text" placeholder="Search here..." [(ngModel)]="formModel.searchText">
                                     <label for ="check" class="icon">
-                                        <i class="fa fa-search"></i>
+                                        <i class="fa fa-search" (click)="clickSearchMessageByText()"></i>
                                     </label>
                             </div>
                         </div>
@@ -173,6 +173,15 @@
                             <div class="clearfix"></div>
                         </form> -->
                         </ng-container>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" [(ngModel)]="formModel.messages"
+                                placeholder="ข้อความ">
+                            <div class="input-group-addon">
+                                <i class="fa fa-paper-plane" (click)="clickMessageByText()"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
