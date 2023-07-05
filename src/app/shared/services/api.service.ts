@@ -1,36 +1,44 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { environment } from "environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class ApiService {
-  private apiUrl = "https://ba-sit.uapi.app/uapi"; // แทนที่ด้วย URL ของ API ที่คุณต้องการเชื่อมต่อ
-
+  // private apiUrl = "https://ba-sit.uapi.app/uapi"; // แทนที่ด้วย URL ของ API ที่คุณต้องการเชื่อมต่อ
+  // API_SERVER_ADDRESS = environment.API_SERVER_ADDRESS;
   constructor(private http: HttpClient) {}
 
   getData(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/ChatGPT_Test/Get100Users`);
+    return this.http.get(
+      `${environment.API_SERVER_ADDRESS}/ChatGPT_Test/Get100Users`
+    );
   }
   getDataByName(data?: any): Observable<any> {
-    return this.http.get<any>(
-      `${this.apiUrl}/ChatGPT_Test/GetListUserByName?DisplayName=` + data
+    return this.http.get(
+      `${environment.API_SERVER_ADDRESS}/ChatGPT_Test/GetListUserByName?DisplayName=` +
+        data
     );
   }
   getMessageByUser(data: any): Observable<any> {
     console.log("data", data);
-    return this.http.get<any>(
-      `${this.apiUrl}/ChatGPT_Test/Get100MessageByUser?UserId=` + data
+    return this.http.get(
+      `${environment.API_SERVER_ADDRESS}/ChatGPT_Test/Get100MessageByUser?UserId=` +
+        data
     );
   }
   postData(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/data`, data);
+    return this.http.post(`${environment.API_SERVER_ADDRESS}/data`, data);
   }
   getSearchByText(data: any): Observable<any> {
     console.log("data", data);
-    return this.http.get<any>(
-      `${this.apiUrl}/ChatGPT_Test/GetSearchByText?UserId=` + data.user + `&Text=` + data.text
+    return this.http.get(
+      `${environment.API_SERVER_ADDRESS}/ChatGPT_Test/GetSearchByText?UserId=` +
+        data.user +
+        `&Text=` +
+        data.text
     );
   }
   // เพิ่มเมธอดเรียกใช้ API อื่นๆ ตามต้องการ
