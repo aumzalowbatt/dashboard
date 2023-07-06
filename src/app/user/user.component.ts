@@ -44,7 +44,7 @@ export class UserComponent implements OnInit {
   }
 
   clickSearchMessageByText() {
-    const param = { user: this.UserId, text: this.formModel.searchText };
+    const param = { UserId: this.UserId, Text: this.formModel.searchText };
     this.apiService.getSearchByText(param).subscribe((res: any) => {
       // this.responseData = res.data;
       console.log("this.responseData", this.responseData, res.data);
@@ -67,7 +67,7 @@ export class UserComponent implements OnInit {
     this.DisplayName = item.DisplayName;
     this.PictureUrl = item.PictureUrl;
     this.UserId = item.UserId;
-    this.apiService.getMessageByUser(item.UserId).subscribe((res: any) => {
+    this.apiService.getMessageByUser({UserId:item.UserId}).subscribe((res: any) => {
       if (res.successful) {
         this.Messages = res.data.map((m) => {
           return { ...m };

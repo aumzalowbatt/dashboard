@@ -1,4 +1,5 @@
 <div class="main-content">
+  <form>
     <div class="container-fluid">
         <div class="card">
             <div class="header">
@@ -7,43 +8,36 @@
                 <div class="col-md-6">
                     <div class="form-group">
                             <label class="">ประเภทคำทำนาย ระดับ 1</label>
-                            <select>
-                                <option>AA</option>
-                                <option>BB</option>
-                                <option>CC</option>
+                            <select [(ngModel)]="formModel.predict1" (ngModelChange)="onpredict1Change(formModel.predict1)">
+                                <option selected [value]="null">เลือก</option>
+                                <option *ngFor="let item of PredictList1" [value]="item.id">{{ item.label }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>ประเภทคำทำนาย ระดับ 2</label>
-                                <select>
-                                <option>เลือกคำทำนาย</option>
-                                <option>A</option>
-                                <option>B</option>
-                                <option>C</option>
-                                </select>
+                                <select [(ngModel)]="formModel.predict2" (ngModelChange)="onpredict2Change(formModel.predict2)">
+                                <option selected [value]="null">เลือก</option>
+                                <option *ngFor="let item of PredictList2" [value]="item.id">{{ item.label }}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
                           <label>ประเภทคำทำนาย ระดับ 3</label>
-                              <select>
-                              <option>เลือกคำทำนาย</option>
-                              <option>A</option>
-                              <option>B</option>
-                              <option>C</option>
-                              </select>
+                              <select [(ngModel)]="formModel.predict3" (ngModelChange)="onpredict3Change(formModel.predict3)">
+                                <option selected [value]="null">เลือก</option>
+                                <option *ngFor="let item of PredictList3" [value]="item.id">{{ item.label }}</option>
+                            </select>
                       </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                         <label>ประเภทคำทำนาย ระดับ 4</label>
-                            <select>
-                            <option>เลือกคำทำนาย</option>
-                            <option>A</option>
-                            <option>B</option>
-                            <option>C</option>
+                            <select [(ngModel)]="formModel.predict4">
+                                <option selected [value]="null">เลือก</option>
+                                <option *ngFor="let item of PredictList4" [value]="item.id">{{ item.label }}</option>
                             </select>
                     </div>
                 </div>
@@ -258,6 +252,7 @@
                     </div>
                 </div>
         </div>
+        </form>
     </div>
 
 

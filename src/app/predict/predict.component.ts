@@ -2,23 +2,28 @@ import { Component, OnInit, TemplateRef, ViewChild , ElementRef } from '@angular
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { content } from 'googleapis/build/src/apis/content';
+import { ApiService } from "../shared/services/api.service";
 
-
+interface Option {
+  level: string;
+  id: string;
+  label: string;
+}
 
 
 @Component({
-  selector: 'app-predict',
-  templateUrl: './predict.component.html',
-  styleUrls: ['./predict.component.scss']
+  selector: "app-predict",
+  templateUrl: "./predict.component.html",
+  styleUrls: ["./predict.component.scss"],
 })
 export class PredictComponent implements OnInit {
   dateForm: FormGroup;
- 
-  
 
-  @ViewChild('startDateInput', { static: true }) startDateInputRef!: ElementRef<HTMLInputElement>;
-  @ViewChild('endDateInput', { static: true }) endDateInputRef!: ElementRef<HTMLInputElement>;
-  
+  @ViewChild("startDateInput", { static: true })
+  startDateInputRef!: ElementRef<HTMLInputElement>;
+  @ViewChild("endDateInput", { static: true })
+  endDateInputRef!: ElementRef<HTMLInputElement>;
+
   // toggleMonthOnly(checked: boolean) {
   //   const startDateInput = this.startDateInputRef.nativeElement;
   //   const endDateInput = this.endDateInputRef.nativeElement;
@@ -31,7 +36,7 @@ export class PredictComponent implements OnInit {
   //   startDateInput.type = checked ? 'week' : 'date';
   //   endDateInput.type = checked ? 'week' : 'date';
   // }
-//  Filter Date
+  //  Filter Date
   // toggleDateType(dateType: string, checked: boolean) {
   //   const startDateInput = this.startDateInputRef.nativeElement;
   //   const endDateInput = this.endDateInputRef.nativeElement;
@@ -62,42 +67,90 @@ export class PredictComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private apiService: ApiService
   ) {}
 
-   onSubmit() {
-     
-   }
-  
+  onSubmit() {}
+  PredictList1: Option[] = [];
+  PredictList2: Option[] = [];
+  PredictList3: Option[] = [];
+  PredictList4: Option[] = [];
   formAdd: any;
   editMode = false;
+  formModel = {
+    predict1: null,
+    predict2: null,
+    predict3: null,
+    predict4: null,
+  };
 
- 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.apiService.getPredictList().subscribe((res: any) => {
+      this.PredictList1 = res.data.map((data: any) => ({
+        id: data.value,
+        level: data.lv,
+        label: data.lists,
+      }));
+      console.log("getPredictList", this.PredictList1);
+      console.log("formModel", this.formModel);
+    });
   }
 
-openModel(){
-  const modelDiv = document.getElementById('myModal');
-  if (modelDiv!=null){
-    modelDiv.style.display='block';
+  onpredict1Change(item) {
+    const param = {
+      search: JSON.stringify([{ Key_lv: { lv: 1, value: item } }]),
+    };
+    this.apiService.getPredictList(param).subscribe((res: any) => {
+      this.PredictList2 = res.data.map((data: any) => ({
+        id: data.value,
+        level: data.lv,
+        label: data.lists,
+      }));
+    });
   }
-}
 
-CloseModel(){
-  const modelDiv = document.getElementById('myModal');
-  if (modelDiv!=null){
-    modelDiv.style.display='none';
+  onpredict2Change(item) {
+    const param = {
+      search: JSON.stringify([{ Key_lv: { lv: 2, value: item } }]),
+    };
+    this.apiService.getPredictList(param).subscribe((res: any) => {
+      this.PredictList3 = res.data.map((data: any) => ({
+        id: data.value,
+        level: data.lv,
+        label: data.lists,
+      }));
+      console.log("getPredictList", this.PredictList3);
+    });
   }
-}
 
+  onpredict3Change(item) {
+    const param = {
+      search: JSON.stringify([{ Key_lv: { lv: 3, value: item } }]),
+    };
+    this.apiService.getPredictList(param).subscribe((res: any) => {
+      this.PredictList4 = res.data.map((data: any) => ({
+        id: data.value,
+        level: data.lv,
+        label: data.lists,
+      }));
+      console.log("getPredictList", this.PredictList4);
+    });
+  }
 
+  openModel() {
+    const modelDiv = document.getElementById("myModal");
+    if (modelDiv != null) {
+      modelDiv.style.display = "block";
+    }
+  }
 
-
-
-
-
-
- 
+  CloseModel() {
+    const modelDiv = document.getElementById("myModal");
+    if (modelDiv != null) {
+      modelDiv.style.display = "none";
+    }
+  }
 
   // EXAMPLE
 
@@ -214,6 +267,4 @@ CloseModel(){
   //   confirmCancel() {
   //       this.modalService.dismissAll();
   //   }
-
-  
 }
