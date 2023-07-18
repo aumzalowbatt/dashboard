@@ -67,12 +67,14 @@
                 <p>Log out</p>
             </a>
         </li>
+        <div class="d-flex align-items-start flex-column" style="height: 200px;">
         <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li>
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
-            <a  [routerLink]="[menuItem.path]">
+        <li class="px-1" routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <a class="px-1" [routerLink]="[menuItem.path]">
                 <i class="{{menuItem.icon}}"></i>
-                <p>{{menuItem.title}}</p>
+                <p class="px-1">{{menuItem.title}}</p>
             </a>
         </li>
+        </div>
     </ul>
 </div>

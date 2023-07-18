@@ -12,18 +12,23 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openModel(){
-    const modelDiv = document.getElementById('myModal');
-    if (modelDiv!=null){
-      modelDiv.style.display='block';
-    }
-  }
+  // openModel(){
+  //   const modelDiv = document.getElementById('myModal');
+  //   if (modelDiv!=null){
+  //     modelDiv.style.display='block';
+  //   }
+  // }
   
-  CloseModel(){
-    const modelDiv = document.getElementById('myModal');
-    if (modelDiv!=null){
-      modelDiv.style.display='none';
-    }
-  }
+  // CloseModel(){
+  //   const modelDiv = document.getElementById('myModal');
+  //   if (modelDiv!=null){
+  //     modelDiv.style.display='none';
+  //   }
+  // }
 
+  
+  
 }
+
+
+

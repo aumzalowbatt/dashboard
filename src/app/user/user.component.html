@@ -4,8 +4,7 @@
             <div class="col-md-3">
                 <form>
                     <div class="card card-user">
-                        <div class="col-md-6"></div>
-                        <div class="col-md-6">
+                        <div class="mb-3 mx-1">
                             <div class="form-group">
                                 <select class="form-control">
                                     <option>ทั้งหมด</option>
@@ -16,33 +15,31 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="mb-3 mx-1">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" [(ngModel)]="formModel.displayName"
                                         placeholder="ค้นหาจากชื่อ">
-                                    <div class="input-group-addon">
+                                    <div class="input-group-addon d-flex align-items-center pr-2">
                                         <i class="fa fa-search" (click)="clickSearchName()"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="mb-3 mx-1">
                             <div class="form-group">
                                 <div class="input-group">
                                     <input type="text" class="form-control" placeholder="ค้นหาจากแท็ก">
-                                    <div class="input-group-addon">
-                                        <i class="fa fa-search"></i>
+                                    <div class="input-group-addon d-flex align-items-center pr-2">
+                                        <i class="fa fa-search "></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="scrollbar scrollbar-primary"> -->
-                        <div class="row scrollbar scrollbar-primary">
-                            <ng-container *ngFor="let item of responseData; let index = index">
-                                <div class="col-md-12 chat-table-fri" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)" >
-                                    
-                                    <div class="col-md-3">
+                        <div class="row mx-0 my-0 scrollbar scrollbar-primary">
+                            <ng-container *ngFor="let item of responseData; let index = index" >
+                                <div class="col-md-12 chat-table-fri" [ngClass]="{'active': isActive}" (click)="clickMessageByUser(item)">
+                                    <div class="col-md-3 mt-1">
                                         <ng-container *ngIf="item.PictureUrl">
                                             <img class="avatar-chat" src="{{item.PictureUrl}}" alt="..." />
                                         </ng-container>
@@ -59,7 +56,6 @@
                                             <i class="fa fa-ellipsis-h"></i>
                                         </div>
                                     </div>
-
                                 </div>
                             </ng-container>
                         </div>
@@ -178,7 +174,7 @@
                         <div class="input-group">
                             <input type="text" class="form-control" [(ngModel)]="formModel.messages"
                                 placeholder="ข้อความ">
-                            <div class="input-group-addon">
+                            <div class="input-group-addon d-flex align-items-center">
                                 <i class="fa fa-paper-plane" (click)="clickMessageByText()"></i>
                             </div>
                         </div>

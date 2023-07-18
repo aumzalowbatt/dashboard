@@ -4,83 +4,66 @@
         <div class="header">
           <h4>สินค้า</h4>
         </div>
-        
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="">หมวดหมู่ Level 1</label>
-              <select>
-                <option>AA</option>
-                <option>BB</option>
-                <option>CC</option>
-              </select>
+
+        <div class="container text-left">
+          <div class="row row-cols-2">
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 1</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>แฟชั่น</option>
+                  <option>สิ่งของอำนวยความสะดวก</option>
+                </select>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>หมวดหมู่ Level 2</label>
-              <select>
-                <option>เลือกคำทำนาย</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-              </select>
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 2</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>เสื้อผ้า</option>
+                  <option>ของใช้ในบ้าน</option>
+                </select>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>หมวดหมู่ Level 3</label>
-              <select>
-                <option>เลือกคำทำนาย</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-              </select>
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 3</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>ผู้ชาย</option>
+                  <option>ผู้หญิง</option>
+                  <option>ห้องครัว</option>
+                </select>
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>หมวดหมู่ Level 4</label>
-              <select>
-                <option>เลือกคำทำนาย</option>
-                <option>A</option>
-                <option>B</option>
-                <option>C</option>
-              </select>
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 4</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>โมเดิร์น</option>
+                  <option>คลาสสิค</option>
+                </select>
             </div>
-          </div>
-  
-          <div class="col-md-6">
-            <div class="form-group">
-                <label>ชื่อผลิตภัณฑ์</label>
-              <div class="input-group">
-                
-                <input type="text" class="form-control" placeholder="กรอกชื่อผลิตภัณฑ์">
-                <div class="input-group-addon">
+            <div class="col mt-3">
+              <label>ชื่อผลิตภัณฑ์</label>
+              <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search Product" aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">
                   <i class="fa fa-search icon-product"></i>
-                  <!--  (click)="clickSearchName()" -->
-                </div>
+                </button>
               </div>
             </div>
           </div>
-          
-        
-  
-        <div class="row">
-          <div class="col-md-6">
-            <div class="d-flex">
-              <button (click)="openModel()" type="button" class="btn btn-add-predict">
-                <i id="myicon" class="fa fa-user"></i>
-                เพิ่มคำทำนาย
-              </button>
-            </div>
+        </div>
+
+        <div class="d-flex flex-row mb-3 justify-content-end">
+          <div class="p-2">
+          <button type="button" class="btn btn-add-predict" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i id="myicon" class="fa fa-user"></i>
+            เพิ่มสินค้า
+          </button>
           </div>
-          <div class="col-md-6">
-            <div class="d-flex">
-              <button (click)="openModel()" type="button" class="btn btn-add-predict">
-                <i id="myicon" class="fa fa-google-plus-square"></i>
-                Import From Excel
-              </button>
-            </div>
+          <div class="p-2">
+            <button  type="button" class="btn btn-add-predict">
+              <i id="myicon" class="fa fa-google-plus-square"></i>
+              Import From Excel
+            </button>
           </div>
         </div>
   
@@ -101,7 +84,7 @@
                 <th class="text-center">จัดการ</th>
               </tr>
             </thead>
-  
+
             <tbody>
               <tr>
                 <td class="text-center">1</td>
@@ -114,20 +97,228 @@
                 <td class="text-center">8</td>
                 <td class="text-center">9</td>
                 <td class="text-center">
-                  <button (click)="openModel()" ngbTooltip="แก้ไข" type="button" class="btn btn-warning">
-                    <i id="myicon1" class="fa fa-edit"></i>Edit
+                  <div class="d-inline p-1"> 
+                  <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <i id="myicon1" class="fa fa-edit"></i>
+                    แก้ไข
                   </button>
+                  </div>
+                  <div class="d-inline p-1">
+                  <button type="button" class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                    ลบ
+                  </button>
+                  </div>
                 </td>
               </tr>
             </tbody>
           </table>
-  
-          <!-- Open Modal -->
-          <div class="modal" tabindex="-1" id="myModal" role="dialog">
-            <!-- Modal content -->
-          </div>
         </div>
       </div>
     </div>
+
+<!--Add Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" data-bs-backdrop="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product Page</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container text-left">
+        <div class="mb-3">
+          <label for="" class="form-label">ชื่อผลิตภัณฑ์</label>
+          <input type="text" class="form-control" id="" placeholder="กรอกชื่อผลิตภัณฑ์">
+        </div>
+        <div class="mb-3">
+          <label for="" class="form-label">บาร์โค้ด</label>
+          <input type="text" class="form-control" id="" placeholder="กรอกบาร์โค้ด">
+        </div>
+        
+          <div class="row row-cols-2">
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 1</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>แฟชั่น</option>
+                  <option>สิ่งของอำนวยความสะดวก</option>
+                </select>
+            </div>
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 2</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>เสื้อผ้า</option>
+                  <option>ของใช้ในบ้าน</option>
+                </select>
+            </div>
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 3</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>ผู้ชาย</option>
+                  <option>ผู้หญิง</option>
+                  <option>ห้องครัว</option>
+                </select>
+            </div>
+            <div class="col mt-2">
+              <label>หมวดหมู่สินค้า ประเภท 4</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>โมเดิร์น</option>
+                  <option>คลาสสิค</option>
+                </select>
+            </div>
+          </div>
+          <!-- Price -->
+          <div class="mb-3">
+            <label for="" class="form-label">ราคา</label>
+            <input type="text" class="form-control" id="" placeholder="กรอกราคา">
+          </div>
+          <!-- Image -->
+          <div class="mb-3">
+            <label for="formFileSm" class="form-label">รูปภาพสินค้า</label>
+            <input class="form-control form-control-sm" id="formFileSm" type="file">
+          </div>
+          <div class="col mt-2">
+            <label>สี</label>
+              <select class="form-select">
+                <option selected>--เลือก--</option>
+                <option>น้ำเงิน</option>
+                <option>แดง</option>
+                <option>ขาว</option>
+                <option>ดำ</option>
+              </select>
+          </div>
+          <div class="col mt-2">
+            <label>ขนาด</label>
+              <select class="form-select">
+                <option selected>--เลือก--</option>
+                <option>เล็ก</option>
+                <option>กลาง</option>
+                <option>ใหญ่</option>
+              </select>
+          </div>
+          <div class="col mt-2">
+            <label for="" class="form-label">การรับประเภท</label>
+            <input type="text" class="form-control" id="" placeholder="กรอกการรับประเภท">
+          </div>
+          <div class="col mt-2">
+            <label for="" class="form-label">Stock</label>
+            <input type="text" class="form-control" id="" placeholder="กรอกสต๊อก">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
   </div>
-  
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container text-left">
+          <div class="mb-3">
+            <label for="" class="form-label">ชื่อผลิตภัณฑ์</label>
+            <input type="text" class="form-control" id="" placeholder="กรอกชื่อผลิตภัณฑ์">
+          </div>
+          <div class="mb-3">
+            <label for="" class="form-label">บาร์โค้ด</label>
+            <input type="text" class="form-control" id="" placeholder="กรอกบาร์โค้ด">
+          </div>
+          
+            <div class="row row-cols-2">
+              <div class="col mt-2">
+                <label>หมวดหมู่สินค้า ประเภท 1</label>
+                  <select class="form-select">
+                    <option selected>--เลือก--</option>
+                    <option>แฟชั่น</option>
+                    <option>สิ่งของอำนวยความสะดวก</option>
+                  </select>
+              </div>
+              <div class="col mt-2">
+                <label>หมวดหมู่สินค้า ประเภท 2</label>
+                  <select class="form-select">
+                    <option selected>--เลือก--</option>
+                    <option>เสื้อผ้า</option>
+                    <option>ของใช้ในบ้าน</option>
+                  </select>
+              </div>
+              <div class="col mt-2">
+                <label>หมวดหมู่สินค้า ประเภท 3</label>
+                  <select class="form-select">
+                    <option selected>--เลือก--</option>
+                    <option>ผู้ชาย</option>
+                    <option>ผู้หญิง</option>
+                    <option>ห้องครัว</option>
+                  </select>
+              </div>
+              <div class="col mt-2">
+                <label>หมวดหมู่สินค้า ประเภท 4</label>
+                  <select class="form-select">
+                    <option selected>--เลือก--</option>
+                    <option>โมเดิร์น</option>
+                    <option>คลาสสิค</option>
+                  </select>
+              </div>
+            </div>
+            <!-- Price -->
+            <div class="mb-3">
+              <label for="" class="form-label">ราคา</label>
+              <input type="text" class="form-control" id="" placeholder="กรอกราคา">
+            </div>
+            <!-- Image -->
+            <div class="mb-3">
+              <label for="formFileSm" class="form-label">รูปภาพสินค้า</label>
+              <input class="form-control form-control-sm" id="formFileSm" type="file">
+            </div>
+            <div class="col mt-2">
+              <label>สี</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>น้ำเงิน</option>
+                  <option>แดง</option>
+                  <option>ขาว</option>
+                  <option>ดำ</option>
+                </select>
+            </div>
+            <div class="col mt-2">
+              <label>ขนาด</label>
+                <select class="form-select">
+                  <option selected>--เลือก--</option>
+                  <option>เล็ก</option>
+                  <option>กลาง</option>
+                  <option>ใหญ่</option>
+                </select>
+            </div>
+            <div class="col mt-2">
+              <label for="" class="form-label">การรับประเภท</label>
+              <input type="text" class="form-control" id="" placeholder="กรอกการรับประเภท">
+            </div>
+            <div class="col mt-2">
+              <label for="" class="form-label">Stock</label>
+              <input type="text" class="form-control" id="" placeholder="กรอกสต๊อก">
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Edit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    
