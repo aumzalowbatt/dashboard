@@ -1,123 +1,87 @@
 <div class="main-content">
-  <form>
     <div class="container-fluid">
-        <div class="card">
+      <div class="card">
             <div class="header">
                 <h4>ค้นหาและบริการฐานข้อมูลคำทำนาย</h4>
             </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                            <label class="">ประเภทคำทำนาย ระดับ 1</label>
-                            <select [(ngModel)]="formModel.predict1" (ngModelChange)="onpredict1Change(formModel.predict1)">
-                                <option selected [value]="null">เลือก</option>
-                                <option *ngFor="let item of PredictList1" [value]="item.id">{{ item.label }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>ประเภทคำทำนาย ระดับ 2</label>
-                                <select [(ngModel)]="formModel.predict2" (ngModelChange)="onpredict2Change(formModel.predict2)">
-                                <option selected [value]="null">เลือก</option>
-                                <option *ngFor="let item of PredictList2" [value]="item.id">{{ item.label }}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                          <label>ประเภทคำทำนาย ระดับ 3</label>
-                              <select [(ngModel)]="formModel.predict3" (ngModelChange)="onpredict3Change(formModel.predict3)">
-                                <option selected [value]="null">เลือก</option>
-                                <option *ngFor="let item of PredictList3" [value]="item.id">{{ item.label }}</option>
-                            </select>
-                      </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                        <label>ประเภทคำทำนาย ระดับ 4</label>
-                            <select [(ngModel)]="formModel.predict4">
-                                <option selected [value]="null">เลือก</option>
-                                <option *ngFor="let item of PredictList4" [value]="item.id">{{ item.label }}</option>
-                            </select>
-                    </div>
+            <div class="container text-left">
+              <div class="row row-cols-2">
+                <div class="col">
+                  <label>ประเภทคำทำนายขั้น 1</label>
+                    <select class="form-select" [(ngModel)]="formModel.predict1" (ngModelChange)="onpredict1Change(formModel.predict1)">
+                      <option selected [value]="null">--เลือก--</option>
+                      <option *ngFor="let item of PredictList1" [value]="item.id">{{ item.label }}</option>
+                    </select>
                 </div>
-                
-                    <div class="col-md-12">
-                        <label class="ms-5" for="checkboxall">ประเภท</label>
-                        <div class="container row">
-                            <div class="col-md-10 input-date"> 
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>ตลอด</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายวัน</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายสัปดาห์</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายเดือน</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายปี</label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- filter date -->
-                    <!-- <div class="col-md-12"> -->
-                    <!-- <label for="showMonthOnly">Month Only:</label>
-                    <input type="checkbox" id="showMonthOnly" (change)="toggleMonthOnly($event.target.checked)">
-                    
-                    <label for="showWeekOnly">Week Only:</label>
-                    <input type="checkbox" id="showWeekOnly" (change)="toggleWeekOnly($event.target.checked)">
-
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" required #startDateInput>
-
-                    <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" required #endDateInput> -->
-                    
-
-                    <!-- <label for="showDay">Day</label>
-                    <input type="checkbox" id="showDay" (change)="toggleDateType('day', $event.target.checked)">
-                    
-                    <label for="showWeek">Week</label>
-                    <input type="checkbox" id="showWeek" (change)="toggleDateType('week', $event.target.checked)">
-                    
-                    <label for="showMonth">Month</label>
-                    <input type="checkbox" id="showMonth" (change)="toggleDateType('month', $event.target.checked)">
-                    
-                    <label for="showYear">Year</label>
-                    <input type="checkbox" id="showYear" (change)="toggleDateType('year', $event.target.checked)">
-                    
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" required #startDateInput>
-                    
-                    <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" required #endDateInput>
-                    
-
-                    </div> -->
-
-                    <!-- Old form -->
-                    <div class="content" style="align-items: baseline;">
-                        <div class="col-3 ms-3">
-                            <label class="date-valid">Valid from</label>
-                        </div>
-                        <div class="col-6 ms-3">
+                <div class="col">
+                  <label>ประเภทคำทำนายขั้น 2</label>
+                    <select class="form-select" [(ngModel)]="formModel.predict2" (ngModelChange)="onpredict2Change(formModel.predict2)">
+                      <option selected [value]="null">--เลือก--</option>
+                      <option *ngFor="let item of PredictList2" [value]="item.id">{{ item.label }}</option>
+                    </select>
+                </div>
+                <div class="col">
+                  <label>ประเภทคำทำนายขั้น 3</label>
+                    <select class="form-select" [(ngModel)]="formModel.predict3" (ngModelChange)="onpredict3Change(formModel.predict3)">
+                      <option selected [value]="null">--เลือก--</option>
+                      <option *ngFor="let item of PredictList3" [value]="item.id">{{ item.label }}</option>
+                    </select>
+                </div>
+                <div class="col">
+                  <label>ประเภทคำทำนายขั้น 4</label>
+                    <select class="form-select" [(ngModel)]="formModel.predict4">
+                      <option selected [value]="null">--เลือก--</option>
+                      <option *ngFor="let item of PredictList4" [value]="item.id">{{ item.label }}</option>
+                    </select>
+                </div>
+              </div>
+            </div>
+                          <div class="col-md-12">
+                              <label class="ms-3 mt-3">ประเภท</label>
+                              <div class="container row">
+                                  <div class="col-md-10 input-date"> 
+                                      <input class="chk-days ms-3" for="checkboxall" type="checkbox" id="chk-all" name="day"><label>ตลอด</label>
+                                      <input class="chk-days ms-3" type="checkbox" id="chk-day" name="day"><label>รายวัน</label>
+                                      <input class="chk-days ms-3" type="checkbox" id="chk-week" name="day"><label>รายสัปดาห์</label>
+                                      <input class="chk-days ms-3" type="checkbox" id="chk-month" name="day"><label>รายเดือน</label>
+                                      <input class="chk-days ms-3" type="checkbox" id="chk-year" name="day"><label>รายปี</label>  
+                                  </div>                          
+                              </div>
+                          </div>
+                          <!-- datepicker -->
+                          <div class="d-inline-flex p-2">
+                          <ngb-datepicker style="justify-content: center;" #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+                          </ngb-datepicker>
                           
-                            <input type="date" id="start" name="start" required>
-                      
+                          <ng-template #t let-date let-focused="focused">
+                            <span
+                              
+                              class="custom-day"
+                              [class.focused]="focused"
+                              [class.range]="isRange(date)"
+                              [class.faded]="isHovered(date) || isInside(date)"
+                              (mouseenter)="hoveredDate = date"
+                              (mouseleave)="hoveredDate = null"
+                            >
+                              {{ date.day }}
+                            </span>
+                          </ng-template>                     
+                          <hr />
+                          <pre>From: {{ fromDate | json }} </pre>
+                          <pre>To: {{ toDate | json }} </pre>
                         </div>
-                        <div class="col-3">
-                            <label class="date-valid">to</label>
-                        </div>
-                    
-                        <div class="col-6">
-                            <input type="date" id="end" name="end" required>
-                        </div>
-                    </div>
-                    <div class="row add-btn">
-                        <div class="d-flex">
-                            <button (click)="openModel()" type="button" class="btn btn-add-predict">
-                                <i id="myicon" class="fa fa-user"></i>
-                                เพิ่มคำทำนาย
-                            </button>
-                        </div>
-                    </div>
+                          <!-- ***** -->
 
-                    <div class="table-container">
+                          <div class="d-flex justify-content-end me-3">
+                            <button type="button" class="btn btn-add-predict" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              <i id="myicon1" class="fa fa-user"></i>เพิ่มข้อมูลคำทำนาย
+                            </button>
+                            <!-- <button (click)="addpredict(this.predictform.value)" type="button" class="btn btn-add-predict" >
+                              <i id="myicon1" class="fa fa-user"></i>เพิ่มข้อมูลคำทำนาย
+                            </button> -->
+                          </div>
+
+                      <div class="table-container">
                         <h3 class="result-predict">Search Result</h3>
                         <table class="table">
                             <thead class="">
@@ -134,127 +98,188 @@
                             </thead>
                         
                             <tbody>
-                              <tr>
-                                <td class="text-center">1</td>
-                                <td class="text-center">2</td>
-                                <td class="text-center">3</td>
-                                <td class="text-center">4</td>
-                                <td class="text-center">5</td>
-                                <td class="text-center">6</td>
-                                <td class="text-center">7</td>
+                              <tr *ngFor="let item of horolist">
+                                <td class="text-center"> {{item.idn}}</td>
+                                <td class="text-center"> {{item.topic}} </td>
+                                <td class="text-left"> {{item.detail}} </td>
+                                <td class="text-center"> {{item.type}} </td>
+                                <td class="text-center"> {{item.startdate}} </td>
+                                <td class="text-center"> {{item.enddate}} </td>
+                                <td class="text-center"> {{item.timename}} </td>
                                 <td class="text-center">
-                                  <button (click)="openModel()" ngbTooltip="แก้ไข" type="button" class="btn btn-warning">
+                                  <!-- openmodal -->
+                                  <button type="button" class="btn btn-warning"(click)="openEditModal()" data-bs-toggle="EditModal" data-bs-target="#EditModal">
                                     <i id="myicon1" class="fa fa-edit"></i>Edit
                                   </button>
                                 </td>
                               </tr>
                             </tbody>
                           </table>
-
-                          <!-- Open Modal -->
-                          <div class="modal" tabindex="-1" id="myModal" role="dialog">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                              <div class="modal-content max-height-modal">
-                                <div class="modal-header">
-                                  <h4 class="modal-title">แก้ไขข้อมูลคำทำนาย</h4>
-                                </div>
-                                <div class="modal-body">
-
-                                  <div class="row">
-                                    <div class="col-sm-6">
-                                      <div class="form-group row" style="align-items: center;">
-                                        <label class="col-sm-6 col-form-label">ประเภทคำทำนาย ระดับ 1</label>
-                                        <div class="col-sm-6">
-                                          <select class="form-control" name="PredictType">
-                                            <option selected value="">-เลือกประเภทคำทำนาย-</option>
-                                            <option>123</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class="form-group row" style="align-items: center;">
-                                        <label class="col-sm-6 col-form-label">ประเภทคำทำนาย ระดับ 3</label>
-                                        <div class="col-sm-6">
-                                          <select class="form-control" name="PredictType">
-                                            <option selected value="">-เลือกประเภทคำทำนาย-</option>
-                                            <option>456</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                      <div class="form-group row" style="align-items: center;">
-                                        <label class="col-sm-6 col-form-label">ประเภทคำทำนาย ระดับ 2</label>
-                                        <div class="col-sm-6">
-                                          <select class="form-control" name="PredictType">
-                                            <option selected value="">-เลือกประเภทคำทำนาย-</option>
-                                            <option>456</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                      <div class="form-group row" style="align-items: center;">
-                                        <label class="col-sm-6 col-form-label">ประเภทคำทำนาย ระดับ 4</label>
-                                        <div class="col-sm-6">
-                                          <select class="form-control" name="PredictType">
-                                            <option selected value="">-เลือกประเภทคำทำนาย-</option>
-                                            <option>456</option>
-                                          </select>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  
-                                  <div class="form-group row" style="align-items: center;">
-                                    <label class="col-sm-3 col-form-label">Valid from</label>
-                                    <div class="col-sm-9">
-                                      <div class="row" style="align-items: baseline;">
-                                        <div class="col-sm-5">
-                                          <input type="date" id="start" name="start" required>
-                                        </div>
-                                        
-                                        <label class="col-sm-2 col-form-label" style="align-items: baseline;">to</label>
-                                        <div class="col-sm-5">
-                                          <input type="date" id="end" name="end" required>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  
-                                  <label class="ms-5" for="checkboxall">ประเภท</label>
-                        <div class="container row">
-                            <div class="col-md-10 input-date"> 
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>ตลอด</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายวัน</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายสัปดาห์</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายเดือน</label>
-                                <input class="chk-days ms-3" type="checkbox" id="" name="day"><label>รายปี</label>
-                            </div>
                         </div>
-                                  <label class="">คำทำนาย</label>
-                                  <div class="form-group row">
-                                    <div class="col-sm-12">
-                                      <textarea class="form-control" rows="12">
-                                        **ประเภท เช็ครายวัน แล้วให้ valid ขึ้นรายวัน   
-                                        เช็ครายเดือน แล้วให้ valid ขึ้นรายเดือน** 
-
-                                        เพิ่มปุ่มGenerate AI กดแล้วให้สร้างหน้า textarea เพิ่ม
-                                      </textarea>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-primary">Generate AI</button>
-                                  <button type="button" class="btn btn-success">Save changes</button>
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="CloseModel()">Close</button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+                      </div>
                     </div>
-                </div>
-        </div>
+                  </div>         
+<!-- Modal Add data -->
+<div class="modal fade" style="position: absolute;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style=" background-color: #007bff;" class="modal-header">
+        <h3 style="color: white;" class="modal-title" id="exampleModalLabel">Add Horoscopes</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form [formGroup]="horoscopesform">
+          <div class="container text-left">
+            <div class="row row-cols-2">
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 1</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict1" (ngModelChange)="onpredict1Change(formModel.predict1)">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList1" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 2</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict2" (ngModelChange)="onpredict2Change(formModel.predict2)">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList2" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 3</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict3" (ngModelChange)="onpredict3Change(formModel.predict3)">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList3" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 4</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict4">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList4" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+            </div>
+          </div>
         </form>
+        <div class="d-flex flex-column mb-3">
+        <div class="d-inline-flex p-2" style="justify-content: center;">
+          <ngb-datepicker  #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+          </ngb-datepicker>
+          
+          <ng-template #t let-date let-focused="focused">
+            <span
+              class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null"
+            >
+              {{ date.day }}
+            </span>
+          </ng-template>        
+        </div>
+        <span>From: {{ fromDate | json }} </span>
+        <span>To: {{ toDate | json }} </span>
+        <div class="p-2 mb-3"> 
+          <label for="exampleFormControlTextarea1" class="form-label">คำทำนาย</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="predictDetail">
+
+          </textarea>
+        </div>
+      </div>
+
+      <div style="background-color: #007bff;" class="modal-footer">
+        <button type="button" class="btn btn-primary">Generate AI</button>
+        <button type="button" class="btn btn-danger" (click)="CancelData(this.horoscopesform.value)" data-bs-dismiss="modal">Cancel</button>
+        <button (click)="addhoroscopes(this.horoscopesform.value)" type="button" class="btn btn-primary">Add</button>
+      </div>
+      
     </div>
+  </div>
+</div>
 
+<!-- Modal Edit data -->  
+<div class="modal fade EditModal" style="position: absolute; height: 850px;" id="EditModal" [class.show]="editModalVisible" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div style=" background-color: #007bff;" class="modal-header">
+        <h3 style="color: white;" class="modal-title" id="exampleModalLabel">Edit Horoscopes</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="EditModal" aria-label="Close"></button>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form [formGroup]="horoscopesform">
+          <div class="container text-left">
+            <div class="row row-cols-2">
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 1</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict1" (ngModelChange)="onpredict1Change(formModel.predict1)" formControlName="predictType1">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList1" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 2</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict2" (ngModelChange)="onpredict2Change(formModel.predict2)" formControlName="predictType2">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList2" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 3</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict3" (ngModelChange)="onpredict3Change(formModel.predict3)" formControlName="predictType3">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList3" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label>ประเภทคำทำนายขั้น 4</label>
+                  <select class="form-select" [(ngModel)]="formModel.predict4" formControlName="predictType4">
+                    <option selected [value]="null">--เลือก--</option>
+                    <option *ngFor="let item of PredictList4" [value]="item.id">{{ item.label }}</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="d-flex flex-column mb-3">
+        <div class="d-inline-flex p-2" style="justify-content: center;">
+          <ngb-datepicker  #dp (dateSelect)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden">
+          </ngb-datepicker>
+          
+          <ng-template #t let-date let-focused="focused">
+            <span
+              class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null"
+            >
+              {{ date.day }}
+            </span>
+          </ng-template>        
+        </div>
+        <span>From: {{ fromDate | json }} </span>
+        <span>To: {{ toDate | json }} </span>
+        <div class="p-2 mb-3"> 
+          <label for="exampleFormControlTextarea1" class="form-label">คำทำนาย</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="predictDetail">
 
+          </textarea>
+        </div>
+      </div>
+
+      <div style="background-color: #007bff;" class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="EditModal">Cancel</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 

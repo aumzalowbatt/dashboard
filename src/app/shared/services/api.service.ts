@@ -45,5 +45,18 @@ export class ApiService {
       params
     );
   }
+
+  getHoroScopes(params?: object){
+    return this.http.get(
+      `${environment.API_SERVER_ADDRESS}/thanos/GetHoroscopes`,
+      params
+    );
+  }
+  public editHoroScopes(item){
+    return this.http.put(
+      `${environment.API_SERVER_ADDRESS}/thanos/UpdateHoroscopes`,
+      item
+    );
+  }
   // เพิ่มเมธอดเรียกใช้ API อื่นๆ ตามต้องการ
 }

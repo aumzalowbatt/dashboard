@@ -136,7 +136,21 @@ h3{
     width: auto;
   }
   
-  
-  
-  
-  
+  // datepicker
+  .mat-calendar-content {
+    display: none;
+  }
+
+  .modal {
+    z-index: 1000;
+    position: absolute;
+  }
+
+  .close {
+    color: white;
+  }
+
+  .modal-body {
+    max-height: 80vh; 
+    overflow-y: auto;
+}

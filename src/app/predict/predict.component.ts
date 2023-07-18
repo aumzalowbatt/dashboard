@@ -1,8 +1,11 @@
-import { Component, OnInit, TemplateRef, ViewChild , ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, TemplateRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, FormsModule } from '@angular/forms';
+import { NgbModal,NgbDate, NgbCalendar, NgbDateParserFormatter, NgbDatepickerModule,NgbDateStruct,NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 import { content } from 'googleapis/build/src/apis/content';
 import { ApiService } from "../shared/services/api.service";
+import { HttpClient } from '@angular/common/http';
+import { JsonPipe } from '@angular/common';
+
 
 interface Option {
   level: string;
@@ -10,73 +13,124 @@ interface Option {
   label: string;
 }
 
+interface Horoscopes {
+  id: string;
+  idn: number;
+  timename: string;
+  topic: string;
+  type: string;
+  zodic: string;
+  startdate: string;
+  enddate: string;
+  detail: string;
+}
+
 
 @Component({
   selector: "app-predict",
   templateUrl: "./predict.component.html",
   styleUrls: ["./predict.component.scss"],
+  styles: [
+		`
+			.custom-day {
+				text-align: center;
+				padding: 0.185rem 0.25rem;
+				display: inline-block;
+				height: 2rem;
+				width: 2rem;
+			}
+			.custom-day.focused {
+				background-color: #e6e6e6;
+			}
+			.custom-day.range,
+			.custom-day:hover {
+				background-color: rgb(2, 117, 216);
+				color: white;
+			}
+			.custom-day.faded {
+				background-color: rgba(2, 117, 216, 0.5);
+			}
+		`,
+	]
 })
 export class PredictComponent implements OnInit {
-  dateForm: FormGroup;
+  // EditModal
+  editModalVisible = false;
 
-  @ViewChild("startDateInput", { static: true })
-  startDateInputRef!: ElementRef<HTMLInputElement>;
-  @ViewChild("endDateInput", { static: true })
-  endDateInputRef!: ElementRef<HTMLInputElement>;
+  openEditModal() {
+    this.editModalVisible = true;
+  }
+  // datepicker
+  hoveredDate: NgbDate | null = null;
 
-  // toggleMonthOnly(checked: boolean) {
-  //   const startDateInput = this.startDateInputRef.nativeElement;
-  //   const endDateInput = this.endDateInputRef.nativeElement;
-  //   startDateInput.type = checked ? 'month' : 'date';
-  //   endDateInput.type = checked ? 'month' : 'date';
-  // }
-  // toggleWeekOnly(checked: boolean) {
-  //   const startDateInput = this.startDateInputRef.nativeElement;
-  //   const endDateInput = this.endDateInputRef.nativeElement;
-  //   startDateInput.type = checked ? 'week' : 'date';
-  //   endDateInput.type = checked ? 'week' : 'date';
-  // }
-  //  Filter Date
-  // toggleDateType(dateType: string, checked: boolean) {
-  //   const startDateInput = this.startDateInputRef.nativeElement;
-  //   const endDateInput = this.endDateInputRef.nativeElement;
+	fromDate: NgbDate;
+	toDate: NgbDate | null = null;
+  // ****
+  horoscopesform!: FormGroup;
+  isActive: boolean;
 
-  //   switch (dateType) {
-  //     case 'day':
-  //       startDateInput.type = checked ? 'date' : 'text';
-  //       endDateInput.type = checked ? 'date' : 'text';
-  //       break;
-  //     case 'week':
-  //       startDateInput.type = checked ? 'week' : 'text';
-  //       endDateInput.type = checked ? 'week' : 'text';
-  //       break;
-  //     case 'month':
-  //       startDateInput.type = checked ? 'month' : 'text';
-  //       endDateInput.type = checked ? 'month' : 'text';
-  //       break;
-  //     case 'year':
-  //       startDateInput.type = checked ? 'year' : 'text';
-  //       endDateInput.type = checked ? 'year' : 'text';
-  //       break;
-  //     default:
-  //       startDateInput.type = 'text';
-  //       endDateInput.type = 'text';
-  //       break;
-  //   }
-  // }
+  openModal(value) {
+    value.active = true
+  }
+
+  closeModal(value) {
+    value.active = false
+  }
+
+
+  dataForm: FormGroup;
+  horolist: Horoscopes[] = [];
+
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formbuilder: FormBuilder,
     private modalService: NgbModal,
-    private apiService: ApiService
-  ) {}
+    private apiService: ApiService,
+    // datepicker
+    private calendar: NgbCalendar,
+    public formatter: NgbDateParserFormatter
+  ) { 
+    this.fromDate = calendar.getToday();
+		this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
+  }
 
-  onSubmit() {}
+  // datepicker
+  onDateSelection(date: NgbDate) {
+		if (!this.fromDate && !this.toDate) {
+			this.fromDate = date;
+		} else if (this.fromDate && !this.toDate && date.after(this.fromDate)) {
+			this.toDate = date;
+		} else {
+			this.toDate = null;
+			this.fromDate = date;
+		}
+	}
+
+	isHovered(date: NgbDate) {
+		return (
+			this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate)
+		);
+	}
+
+	isInside(date: NgbDate) {
+		return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
+	}
+
+	isRange(date: NgbDate) {
+		return (
+			date.equals(this.fromDate) ||
+			(this.toDate && date.equals(this.toDate)) ||
+			this.isInside(date) ||
+			this.isHovered(date)
+		);
+	}
+  // **********
+
+  onSubmit() { }
   PredictList1: Option[] = [];
   PredictList2: Option[] = [];
   PredictList3: Option[] = [];
   PredictList4: Option[] = [];
-  formAdd: any;
   editMode = false;
   formModel = {
     predict1: null,
@@ -86,6 +140,7 @@ export class PredictComponent implements OnInit {
   };
 
   ngOnInit() {
+    // Select Predict From Dropdown
     this.apiService.getPredictList().subscribe((res: any) => {
       this.PredictList1 = res.data.map((data: any) => ({
         id: data.value,
@@ -95,6 +150,40 @@ export class PredictComponent implements OnInit {
       console.log("getPredictList", this.PredictList1);
       console.log("formModel", this.formModel);
     });
+    // Fetch Data From Api to Table
+    this.apiService.getHoroScopes().subscribe((res: any) => {
+      this.horolist = res.data.map((data: any) => ({
+        idn: data.id,
+        timename: data.dooduang_time_name,
+        topic: data.dooduang_topic,
+        type: data.topic_type,
+        zodic: data.zodiac,
+        startdate: data.start_date,
+        enddate: data.end_date,
+        detail: data.dooduang_detail
+        // ^^ คำทำนาย
+      }));
+      console.log("getHoroScopes", this.horolist);
+    });
+
+    // Add data
+    this.horoscopesform = this.formbuilder.group({
+      predict1: ['', Validators.required],
+      predict2: ['', Validators.required],
+      predict3: ['', Validators.required],
+      predict4: ['', Validators.required],
+      predictDetail: ['', Validators.required],
+    })
+  }
+  addhoroscopes (data:any) {
+    console.log(this.formModel.predict1)
+    // this.apiService.getHoroScopes(data).subscribe((res=>{
+    //   this.horoscopesform.reset();
+    // }))
+   
+  }
+  CancelData(data:any){
+    this.horoscopesform.reset();
   }
 
   onpredict1Change(item) {
@@ -107,7 +196,13 @@ export class PredictComponent implements OnInit {
         level: data.lv,
         label: data.lists,
       }));
+      if (this.formModel.predict1 === "null") {
+          this.formModel.predict2 = null;
+          this.formModel.predict3 = null;
+          this.formModel.predict4 = null;
+      }
     });
+    console.log("getPredictList", this.PredictList2);
   }
 
   onpredict2Change(item) {
@@ -120,10 +215,13 @@ export class PredictComponent implements OnInit {
         level: data.lv,
         label: data.lists,
       }));
-      console.log("getPredictList", this.PredictList3);
+      if (this.formModel.predict2 === "null") {
+        this.formModel.predict3 = null;
+        //   this.formModel.predict4 = null;
+      }
     });
+    console.log("getPredictList", this.PredictList3);
   }
-
   onpredict3Change(item) {
     const param = {
       search: JSON.stringify([{ Key_lv: { lv: 3, value: item } }]),
@@ -134,137 +232,13 @@ export class PredictComponent implements OnInit {
         level: data.lv,
         label: data.lists,
       }));
-      console.log("getPredictList", this.PredictList4);
+
+      if (this.formModel.predict3 === "null") {
+        this.formModel.predict4 = null;
+      }
     });
+    console.log("getPredictList", this.PredictList4);
   }
-
-  openModel() {
-    const modelDiv = document.getElementById("myModal");
-    if (modelDiv != null) {
-      modelDiv.style.display = "block";
-    }
-  }
-
-  CloseModel() {
-    const modelDiv = document.getElementById("myModal");
-    if (modelDiv != null) {
-      modelDiv.style.display = "none";
-    }
-  }
-
-  // EXAMPLE
-
-  // @ViewChild('AddModal') addModal: TemplateRef<any>;
-
-  //   openAddItemModal(item = null) {
-  //       this.initialFormAdd(item);
-
-  //       const params = {
-  //           windowClass: 'alert-modal capture-modal',
-  //           size: 'xl',
-  //           centered: true,
-  //           scrollable: true,
-  //           backdrop: 'static',
-  //           keyboard: false
-  //       } as any;
-
-  //       this.editMode = item ? true : false;
-
-  //       let modalRef = this.modalService.open(this.addModal, params);
-  //       const b = this.formAdd.days.every(day => day.checked);
-  //       this.formAdd.checkAll = b;
-  //       console.log(this.formAdd.EndTime, this.times);
-  //   }
-
-  //   initialFormAdd(item?) {
-  //     const data = item || this.tempForm;
-  //     this.formAdd = Object.assign({}, data);
-  //     this.formAdd.days = this.tempDays.map(m => Object.assign({}, m));
-
-  //     if (item) {
-  //         this.formAdd.days.map(m => {
-  //             const keys = Object.keys(item);
-  //             keys.forEach(f => {
-  //                 if (f == m.day) {
-  //                     m.checked = item[f] ? true : false;
-  //                 }
-  //             });
-  //         });
-  //     }
-  // }
-
-  //   @ViewChild('EditModal') editModal: TemplateRef<any>;
-
-  //   openEditItemModal() {
-  //       const params = {
-  //           windowClass: 'alert-modal capture-modal',
-  //           size: 'xl',
-  //           centered: true,
-  //           scrollable: true,
-  //           backdrop: 'static',
-  //           keyboard: false
-  //       } as any;
-  //       let modalRef = this.modalService.open(this.editModal, params);
-  //   }
-
-  //   @ViewChild('ConfirmModal') confirmModal: TemplateRef<any>;
-  //   openConfirmModal() {
-  //       const params = {
-  //           windowClass: 'alert-modal capture-modal',
-  //           size: 'md',
-  //           centered: true,
-  //           scrollable: true,
-  //           backdrop: 'static',
-  //           keyboard: false
-  //       } as any;
-  //       let day = this.formAdd.days.filter(day => day.checked == true);
-  //       if (
-  //           this.formAdd.ShiftName == undefined ||
-  //           !this.formAdd.ShiftName ||
-  //           // !this.formAdd.LateTime ||
-  //           !this.formAdd.BeginTime ||
-  //           !this.formAdd.EndTime ||
-  //           day.length == 0
-  //       ) {
-  //           this.alert.Error('กรุณาตรวจสอบข้อมูล');
-  //       } else {
-  //           let modalRef = this.modalService.open(this.confirmModal, params);
-  //       }
-  //   }
-  //   @ViewChild('CancelModal') cancelModal: TemplateRef<any>;
-  //   openCancelModal() {
-  //       const params = {
-  //           windowClass: 'alert-modal capture-modal',
-  //           size: 'md',
-  //           centered: true,
-  //           scrollable: true,
-  //           backdrop: 'static',
-  //           keyboard: false
-  //       } as any;
-  //       let modalRef = this.modalService.open(this.cancelModal, params);
-  //   }
-
-  //   confirmSave() {
-  //       this.PSSaveShiftWork();
-  //   }
-  //   async PSSaveShiftWork() {
-  //       const days = this.formAdd.days;
-  //       for (let index = 0; index < days.length; index++) {
-  //           const item = days[index];
-  //           this.formAdd[item.day] = item.checked ? 1 : 0;
-  //       }
-  //       const res = await this.api.PSSaveShiftWork(this.formAdd);
-  //       if (res.successful) {
-  //           this.initialFormAdd();
-  //           this.modalService.dismissAll();
-  //           this.alert.Success('บันทึกข้อมูลสำเร็จ', '', 3).then(async () => {
-  //               await this.GetShiftWork();
-  //           });
-  //       } else {
-  //           this.alert.ErrorNormal();
-  //       }
-  //   }
-  //   confirmCancel() {
-  //       this.modalService.dismissAll();
-  //   }
 }
+
+
